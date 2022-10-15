@@ -15,6 +15,13 @@ public class Main {
             String inputStr = scanner.next();
             System.out.println("display input string: " + inputStr);
             if (checkInputKey(inputStr) == inputType.KeyNumber) {
+                System.out.println("continue");
+                int number = Integer.valueOf(inputStr);
+                if (number >= 0) {
+                    System.out.println("Positive number: " + Integer.valueOf(inputStr));
+                } else {
+                    System.out.println("Negtive number: " + Integer.valueOf(inputStr));
+                }
                 continue;
             }
             try {
@@ -38,9 +45,12 @@ public class Main {
         if (str.equals("q") || str.equals("Q")) {
             return inputType.QuitGame; //quit
         }
-        Boolean strResult = str.matches("-?[0-9]+.？[0-9]*");
+        //Boolean strResult = str.matches("^[-+]?[0-9]+.?[0-9]*$"); //positive negtive number or +-float
+        //Boolean strResult = str.matches("^[0-9]*[1-9][0-9]*$"); //positive number
+        Boolean strResult = str.matches("^+?[1-9][0-9]*$"); //only non zero positive number
+
         if (strResult) {
-            return inputType.KeyNumber; //number int or float
+            return inputType.KeyNumber; //only non zero positive number
         } else {
             if (str.equals('q') || str.equals('Q')) {
                 return inputType.KeyString; //string
