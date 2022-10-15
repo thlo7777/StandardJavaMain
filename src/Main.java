@@ -27,6 +27,7 @@ public class Main {
             try {
                 catchupExeception.throwExeception();
             } catch (IllegalStateException e) {
+                System.out.println(e.getMessage());
                 System.out.println("catch a IllegalStateException");
                 //e.printStackTrace();
             } /*finally {
